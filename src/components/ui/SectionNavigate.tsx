@@ -8,7 +8,7 @@ interface SectionProp {
 
 const SectionNavigate: FC<SectionProp> = ({ logo, dark, children }) => {
   return (
-    <section className="flex flex-col justify-between items-center w-[20%] max-w-[230px] min-h-screen bg-(--theme-color) py-7 px-3">
+    <section className="flex flex-col justify-between items-center w-[20%] max-w-[230px] min-h-screen bg-(--theme-color) py-7 px-5">
       {logo}
       <div className="w-full h-[65vh]">
         <div className="flex justify-between">

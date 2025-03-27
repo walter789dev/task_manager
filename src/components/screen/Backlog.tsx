@@ -1,12 +1,15 @@
-import DarkTheme from "../ui/DarkTheme";
-import Logo from "../ui/Logo";
-import SectionNavigate from "../ui/SectionNavigate";
+import HeaderSection from "../ui/HeaderSection";
+import fondoBacklog from "../../assets/images/fondo-backlog.webp";
+import TaskTitle from "../ui/TaskTitle";
+import Table from "../ui/Table";
 
 const Backlog = () => {
   return (
-    <>
-      <SectionNavigate logo={<Logo />} dark={<DarkTheme />}></SectionNavigate>
-    </>
+    <div className="grow">
+      <HeaderSection title="My Backlog" image={fondoBacklog} />
+      <TaskTitle send />
+      <Table />
+    </div>
   );
 };
 
