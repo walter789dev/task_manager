@@ -1,7 +1,7 @@
-import HeaderSection from "../ui/HeaderSection";
+import HeaderSection from "../components/common/HeaderSection";
 import fondoBacklog from "../../assets/images/fondo-backlog.webp";
-import TaskTitle from "../ui/TaskTitle";
-import Table from "../ui/Table";
+import TaskTitle from "../components/common/TaskTitle";
+import Table from "../features/backlog/Table";
 
 const Backlog = () => {
   return (

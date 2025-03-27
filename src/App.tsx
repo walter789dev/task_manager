@@ -1,6 +1,6 @@
 import "./App.css";
-import Backlog from "./components/screen/Backlog";
-import Navigate from "./components/ui/Navigate";
+import Backlog from "./pages/Backlog";
+import Navigate from "./features/navigate/Navigate";
 
 function App() {
   return (
