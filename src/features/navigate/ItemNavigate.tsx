@@ -22,7 +22,7 @@ const ItemNavigate: FC<PropsItem> = ({
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "flex gap-3 text-black"
+              ? "flex gap-3 text-dark"
               : "flex gap-3 text-(--text-color)"
           }
           to={url}

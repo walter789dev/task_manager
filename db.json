@@ -1,3 +1,18 @@
 {
-    
+  "backlog": [
+    {
+      "id": 1,
+      "titulo": "Titulo de Prueba",
+      "descripcion": "Esta es una descripción de prueba sobre como debe verse una tarea",
+      "fechaInicio": "10-12-2025",
+      "fechaFinal": "23-11-2026"
+    },
+    {
+      "id": 2,
+      "titulo": "Titulo de Prueba 2",
+      "descripcion": "Esta es una explicación de prueba sobre como deberia funcioanr",
+      "fechaInicio": "15-11-2025",
+      "fechaFinal": "20-01-2026"
+    }
+  ]
 }

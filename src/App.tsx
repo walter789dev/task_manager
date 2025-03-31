@@ -1,5 +1,5 @@
 import "./App.css";
-import Backlog from "./pages/Backlog";
+import Backlog from "./components/screen/Backlog";
 import Navigate from "./features/navigate/Navigate";
 
 function App() {

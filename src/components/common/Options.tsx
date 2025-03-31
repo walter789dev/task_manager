@@ -1,15 +1,21 @@
-const Options = () => {
+import { FC } from "react";
+
+interface PropsOptions {
+  edit: VoidFunction;
+}
+
+const Options: FC<PropsOptions> = ({ edit }) => {
   return (
-    <div className="flex gap-5 w-60">
+    <div className="flex gap-5">
       <svg
         width="40"
         height="40"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         className="cursor-pointer hover:stroke-blue-500"
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -23,10 +29,11 @@ const Options = () => {
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         className="cursor-pointer hover:stroke-green-500"
+        onClick={edit}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
@@ -39,9 +46,9 @@ const Options = () => {
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         className="cursor-pointer hover:stroke-red-500"
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />

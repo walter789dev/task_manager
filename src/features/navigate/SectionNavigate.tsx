@@ -8,7 +8,7 @@ interface SectionProp {
 
 const SectionNavigate: FC<SectionProp> = ({ logo, dark, children }) => {
   return (
-    <section className="flex flex-col justify-between items-center w-[20%] max-w-[230px] min-h-screen bg-(--theme-color) py-7 px-5">
+    <section className="flex flex-col justify-between items-center w-[20%] max-w-[200px] min-h-screen bg-[#F9F9F9] py-6 px-4">
       {logo}
       <div className="w-full h-[65vh]">
         <div className="flex justify-between">
@@ -18,10 +18,9 @@ const SectionNavigate: FC<SectionProp> = ({ logo, dark, children }) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="#969090"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            className="icon icon-tabler icons-tabler-outline icon-tabler-chevron-down"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M6 9l6 6l6 -6" />
