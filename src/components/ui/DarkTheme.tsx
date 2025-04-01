@@ -1,12 +1,12 @@
 const DarkTheme = () => {
   return (
-    <button className="flex gap-2 px-6 py-2 font-semibold border border-(--text-color) rounded-2xl cursor-pointer">
+    <button className="flex gap-2 px-6 py-2 font-semibold border text-white rounded-2xl cursor-pointer">
       <svg
         width="24"
         height="24"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="currentColor"
+        stroke="#fff"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

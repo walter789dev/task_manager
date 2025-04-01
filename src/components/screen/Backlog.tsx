@@ -1,5 +1,5 @@
 import Table from "../../features/backlog/Table";
-import fondoBacklog from "../../assets/images/fondo-backlog.webp";
+import fondoBacklog from "../../assets/images/fondo-backlog.jpg";
 import HeaderSection from "../common/HeaderSection";
 import TaskTitle from "../common/TaskTitle";
 import ModalForm from "../../features/backlog/ModalForm";
@@ -9,21 +9,26 @@ import { Task } from "../../types/task";
 
 const Backlog = () => {
   const [modal, setModal] = useState(false);
-  const [editTask, setEditTask] = useState<Task>();
+  const [editTask, setEditTask] = useState<Task | null>(null);
 
-  const showModal = (task?: Task) => {
-    if (task && task.titulo) setEditTask(task);
+  const showModal = () => {
     setModal((state) => !state);
   };
 
+  const resetModal = () => {
+    setEditTask(null);
+    showModal();
+  };
+
   return (
-    <div className="grow bg-[#f1f2f6]">
+    <div className="grow bg-[#f4f4f8]">
       <HeaderSection title="My Backlog" image={fondoBacklog} />
       <TaskTitle title="backlog">
-        <Button event={showModal} text="Añadir Tarea" type="primary" />
+        <Button event={() => {}} text="Enviar Tarea" type="secondary" />
+        <Button event={resetModal} text="Añadir Tarea" type="primary" />
       </TaskTitle>
-      <Table openModal={showModal} />
-      {modal && <ModalForm openModal={showModal} editTask={editTask} />}
+      <Table openModal={showModal} setEditTask={setEditTask} />
+      {modal && <ModalForm closeModal={showModal} editTask={editTask} />}
     </div>
   );
 };

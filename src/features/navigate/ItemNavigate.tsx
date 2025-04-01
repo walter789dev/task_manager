@@ -23,7 +23,7 @@ const ItemNavigate: FC<PropsItem> = ({
           className={({ isActive }) =>
             isActive
               ? "flex gap-3 text-dark"
-              : "flex gap-3 text-(--text-color)"
+              : "flex gap-3 text-white"
           }
           to={url}
         >
@@ -31,7 +31,7 @@ const ItemNavigate: FC<PropsItem> = ({
           {text}
         </NavLink>
       ) : (
-        <span className="flex gap-3 text-(--text-color)">
+        <span className="flex gap-3 text-white">
           <img src={svg} alt="Icono de enlace" />
           {text}
         </span>

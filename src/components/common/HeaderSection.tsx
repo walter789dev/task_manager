@@ -10,7 +10,7 @@ const HeaderSection: FC<PropsHeader> = ({ image, title }) => {
   const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 
   return (
-    <header className="relative h-38">
+    <header className="relative h-40">
       <div className="absolute inset-0">
         <img
           className="w-full h-full object-cover brightness-75"

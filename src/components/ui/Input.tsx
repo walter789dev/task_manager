@@ -33,6 +33,7 @@ export const Input: FC<PropsInput> = ({
         value={value}
         placeholder={placeholder}
         autoComplete="off"
+        required
       />
     </div>
   );

@@ -9,8 +9,8 @@ interface PropsButton {
 const Button: FC<PropsButton> = ({ text, type, event }) => {
   const styles =
     type === "primary"
-      ? " text-white bg-(--secondary-color) border-(--secondary-color)"
-      : "text-(--text-color) border-(--text-color)";
+      ? " text-white bg-[#657aa1] border-[#657aa1]"
+      : "text-gray-400 border-gray-400";
   return (
     <button
       type="button"

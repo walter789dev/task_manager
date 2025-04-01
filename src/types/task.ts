@@ -5,7 +5,7 @@ export interface Sprint {
 }
 
 export interface Task {
-    id: number
+    id?: string
     titulo: string
     descripcion: string
     fechaInicio: string

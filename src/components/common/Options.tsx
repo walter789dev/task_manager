@@ -2,9 +2,10 @@ import { FC } from "react";
 
 interface PropsOptions {
   edit: VoidFunction;
+  remove: VoidFunction;
 }
 
-const Options: FC<PropsOptions> = ({ edit }) => {
+const Options: FC<PropsOptions> = ({ edit, remove }) => {
   return (
     <div className="flex gap-5">
       <svg
@@ -50,6 +51,7 @@ const Options: FC<PropsOptions> = ({ edit }) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         className="cursor-pointer hover:stroke-red-500"
+        onClick={remove}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M4 7l16 0" />

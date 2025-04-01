@@ -1,18 +1,33 @@
 {
   "backlog": [
     {
-      "id": 1,
-      "titulo": "Titulo de Prueba",
-      "descripcion": "Esta es una descripción de prueba sobre como debe verse una tarea",
-      "fechaInicio": "10-12-2025",
-      "fechaFinal": "23-11-2026"
+      "id": "1",
+      "titulo": "Mondongo",
+      "descripcion": "Mondongo",
+      "fechaInicio": "2025-11-20",
+      "fechaFinal": "2026-11-14"
     },
     {
-      "id": 2,
-      "titulo": "Titulo de Prueba 2",
-      "descripcion": "Esta es una explicación de prueba sobre como deberia funcioanr",
-      "fechaInicio": "15-11-2025",
-      "fechaFinal": "20-01-2026"
+      "id": "6",
+      "titulo": "Monguito",
+      "descripcion": "Este es el hijo de mondongo",
+      "fechaInicio": "2025-09-10",
+      "fechaFinal": "2026-09-02"
+    },
+    {
+      "id": "2",
+      "titulo": "Mandinga",
+      "descripcion": "Este es el tio de monguito",
+      "fechaInicio": "2025-10-02",
+      "fechaFinal": "2026-11-16"
+    },
+    {
+      "id": "1743524604475",
+      "titulo": "Mango",
+      "descripcion": "El primo de monguito",
+      "fechaInicio": "2025-04-09",
+      "fechaFinal": "2025-04-15"
     }
-  ]
+  ],
+  "sprints": []
 }
