@@ -1,6 +1,4 @@
-import { Task } from "../types/task";
-
-export const helpHttp = <T>(API_URL: string) => {
+export const helpHttp = <T extends object>(API_URL: string) => {
   const getAllItems = async () => {
     try {
       const preResult = await fetch(API_URL);
@@ -14,14 +12,14 @@ export const helpHttp = <T>(API_URL: string) => {
     }
   };
 
-  const createItem = async (task: Task) => {
+  const createItem = async (item: T) => {
     try {
       const preResult = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify(task),
+        body: JSON.stringify(item),
       });
 
       if (!preResult.ok) {
@@ -34,29 +32,31 @@ export const helpHttp = <T>(API_URL: string) => {
     }
   };
 
-  const updateItem = async (task: Task) => {
+  const updateItem = async (item: T) => {
     try {
-      const preResult = await fetch(`${API_URL}/${task.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(task),
-      });
+      if ("id" in item) {
+        const preResult = await fetch(`${API_URL}/${item.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(item),
+        });
 
-      if (!preResult.ok) {
-        throw new Error("No se han podido actualizar el elemento solicitado");
+        if (!preResult.ok) {
+          throw new Error("No se han podido actualizar el elemento solicitado");
+        }
+
+        return preResult.ok;
       }
-
-      return preResult.ok;
     } catch (e) {
       console.error(e);
     }
   };
 
-  const deleteItem = async (taskId: string) => {
+  const deleteItem = async (itemId: string) => {
     try {
-      const preResult = await fetch(`${API_URL}/${taskId}`, {
+      const preResult = await fetch(`${API_URL}/${itemId}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json; charset=UTF-8",

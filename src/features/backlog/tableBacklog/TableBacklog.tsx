@@ -1,16 +1,18 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { Task } from "../../types/task";
-import ItemTable from "./ItemTable";
-import Options from "../../components/common/Options";
-import { useTaskList } from "../../hooks/useTaskList";
+import { Task } from "../../../types/ITask";
+import TaskTableBacklog from "./RowTableBacklog";
+import Options from "../../../components/common/Options";
+import { useTaskList } from "../../../hooks/useTaskList";
+import ModalData from "../../../components/ui/ModalData";
 
 interface PropsTable {
   openModal: VoidFunction;
   setEditTask: (task: Task) => void;
 }
 
-const Table: FC<PropsTable> = ({ openModal, setEditTask }) => {
+const TableBacklog: FC<PropsTable> = ({ openModal, setEditTask }) => {
+  const [showData, setShowData] = useState<Task | null>(null);
   const { taskBacklog, getAllTaskBacklog, deleteTaskBacklog } = useTaskList();
 
   const handlerEditTask = (task: Task) => {
@@ -44,23 +46,25 @@ const Table: FC<PropsTable> = ({ openModal, setEditTask }) => {
         <div className="flex items-center justify-evenly h-12 bg-[#F0F0F0] font-semibold">
           <span>Titulo</span>
           <span>Descripción</span>
-          <span>Fecha Incio</span>
           <span>Fecha Limite</span>
           <span>Opciones</span>
         </div>
         <div>
           {taskBacklog.map((task: Task) => (
-            <ItemTable key={task.id} task={task}>
+            <TaskTableBacklog key={task.id} task={task}>
               <Options
+                size="40"
+                see={() => setShowData(task)}
                 edit={() => handlerEditTask(task)}
                 remove={() => handlerDeleteTask(task.id!)}
               />
-            </ItemTable>
+            </TaskTableBacklog>
           ))}
         </div>
       </section>
+      {showData && <ModalData data={showData} close={setShowData} />}
     </>
   );
 };
 
-export default Table;
+export default TableBacklog;

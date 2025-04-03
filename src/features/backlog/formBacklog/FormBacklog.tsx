@@ -1,9 +1,9 @@
 import { FC, useEffect } from "react";
-import { Input } from "../../components/ui/Input";
-import Button from "../../components/ui/Button";
-import { useForm } from "../../hooks/useForm";
-import { Task } from "../../types/task";
-import { useTaskList } from "../../hooks/useTaskList";
+import { Input } from "../../../components/ui/Input";
+import Button from "../../../components/ui/Button";
+import { useForm } from "../../../hooks/useForm";
+import { Task } from "../../../types/ITask";
+import { useTaskList } from "../../../hooks/useTaskList";
 
 interface PropsForm {
   editTask: Task | null | undefined;
@@ -13,11 +13,11 @@ interface PropsForm {
 const initial: Task = {
   titulo: "",
   descripcion: "",
-  fechaInicio: "",
-  fechaFinal: "",
+  estado: "pendiente",
+  fechaLimite: "",
 };
 
-const ModalForm: FC<PropsForm> = ({ closeModal, editTask }) => {
+const FormBacklog: FC<PropsForm> = ({ closeModal, editTask }) => {
   const { dataForm, setDataForm, handlerDataForm } = useForm(initial);
   const { createTaskBacklog, modifyTaskBacklog } = useTaskList();
 
@@ -55,22 +55,15 @@ const ModalForm: FC<PropsForm> = ({ closeModal, editTask }) => {
           placeholder="Descripción de la tarea"
           onChange={handlerDataForm}
         />
-        <div className="flex gap-17">
-          <Input
-            type="date"
-            name="fechaInicio"
-            value={dataForm.fechaInicio}
-            text="fecha inicial"
-            onChange={handlerDataForm}
-          />
-          <Input
-            type="date"
-            name="fechaFinal"
-            value={dataForm.fechaFinal}
-            text="fecha final"
-            onChange={handlerDataForm}
-          />
-        </div>
+
+        <Input
+          type="date"
+          name="fechaLimite"
+          value={dataForm.fechaLimite}
+          text="fecha limite"
+          onChange={handlerDataForm}
+        />
+
         <div className="flex justify-center mt-3 gap-10">
           <Button event={closeModal} text="Cancelar" type="secondary" />
           <Button
@@ -84,4 +77,4 @@ const ModalForm: FC<PropsForm> = ({ closeModal, editTask }) => {
   );
 };
 
-export default ModalForm;
+export default FormBacklog;

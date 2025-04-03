@@ -4,30 +4,46 @@
       "id": "1",
       "titulo": "Mondongo",
       "descripcion": "Mondongo",
-      "fechaInicio": "2025-11-20",
-      "fechaFinal": "2026-11-14"
+      "fechaLimite": "2026-11-14",
+      "estado": "pendiente"
     },
     {
       "id": "6",
       "titulo": "Monguito",
       "descripcion": "Este es el hijo de mondongo",
-      "fechaInicio": "2025-09-10",
-      "fechaFinal": "2026-09-02"
+      "fechaLimite": "2026-09-02",
+      "estado": "pendiente"
     },
     {
       "id": "2",
       "titulo": "Mandinga",
       "descripcion": "Este es el tio de monguito",
-      "fechaInicio": "2025-10-02",
-      "fechaFinal": "2026-11-16"
+      "fechaLimite": "2026-11-16",
+      "estado": "pendiente"
     },
     {
       "id": "1743524604475",
       "titulo": "Mango",
       "descripcion": "El primo de monguito",
-      "fechaInicio": "2025-04-09",
-      "fechaFinal": "2025-04-15"
+      "fechaLimite": "2025-04-15",
+      "estado": "pendiente"
     }
   ],
-  "sprints": []
+  "sprints": [
+    {
+      "id": "1",
+      "fechaInicio": "2025-10-10",
+      "fechaFinal": "2025-12-12",
+      "nombre": "Sprint Ejemplo",
+      "tareas": [
+        {
+          "id": "20",
+          "titulo": "Mango",
+          "descripcion": "El primo de monguito",
+          "fechaLimite": "2025-04-15",
+          "estado": "pendiente"
+        }
+      ]
+    }
+  ]
 }

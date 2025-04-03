@@ -1,16 +1,12 @@
 import { create } from "zustand";
-import { Sprint, Task } from "../types/task";
+import { Task } from "../types/ITask";
 
 interface StoreBacklog {
   backlog: Task[] | [];
-  setAllTaskBacklog: (AllTask: Task[]) => void;
+  setAllTaskBacklog: (allTask: Task[]) => void;
   addTaskBacklog: (task: Task) => void;
   editTaskBacklog: (task: Task) => void;
   removeTaskBacklog: (id: string) => void;
-}
-
-interface StoreSprint {
-  sprints: Sprint[];
 }
 
 export const useStoreBacklog = create<StoreBacklog>((set) => ({
@@ -28,8 +24,4 @@ export const useStoreBacklog = create<StoreBacklog>((set) => ({
     set((state) => ({
       backlog: state.backlog.filter((task) => task.id !== id),
     })),
-}));
-
-export const useStoreSprint = create<StoreSprint>(() => ({
-  sprints: [],
 }));

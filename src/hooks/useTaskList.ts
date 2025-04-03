@@ -1,10 +1,10 @@
 import { useShallow } from "zustand/shallow";
-import { URL_BACKLOG } from "../helpers/constantes";
 import { helpHttp } from "../helpers/helpHttp";
-import { useStoreBacklog } from "../store/useStore";
-import { Task } from "../types/task";
+import { useStoreBacklog } from "../store/useStoreBacklog";
+import { Task } from "../types/ITask";
 
 export const useTaskList = () => {
+  const URL_BACKLOG = import.meta.env.VITE_URL_BACKLOG;
   const {
     backlog,
     setAllTaskBacklog,
