@@ -40,8 +40,8 @@ const Table: FC<PropsTable> = ({ openModal, setEditTask }) => {
 
   return (
     <>
-      <section className="w-[85%] h-[65vh] mx-auto rounded-t-xl overflow-hidden border border-gray-300">
-        <div className="flex items-center justify-evenly h-12 bg-[#cba9c5] font-semibold">
+      <section className="w-[90%] h-[65vh] mx-auto rounded-t-xl overflow-hidden bg-[#FAFAFA]">
+        <div className="flex items-center justify-evenly h-12 bg-[#F0F0F0] font-semibold">
           <span>Titulo</span>
           <span>Descripción</span>
           <span>Fecha Incio</span>

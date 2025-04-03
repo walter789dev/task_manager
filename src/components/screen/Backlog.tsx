@@ -1,5 +1,5 @@
 import Table from "../../features/backlog/Table";
-import fondoBacklog from "../../assets/images/fondo-backlog.jpg";
+import fondoBacklog from "../../assets/images/fondo-backlog.webp";
 import HeaderSection from "../common/HeaderSection";
 import TaskTitle from "../common/TaskTitle";
 import ModalForm from "../../features/backlog/ModalForm";
@@ -21,9 +21,9 @@ const Backlog = () => {
   };
 
   return (
-    <div className="grow bg-[#f4f4f8]">
+    <div className="grow">
       <HeaderSection title="My Backlog" image={fondoBacklog} />
-      <TaskTitle title="backlog">
+      <TaskTitle title="Backlog">
         <Button event={() => {}} text="Enviar Tarea" type="secondary" />
         <Button event={resetModal} text="Añadir Tarea" type="primary" />
       </TaskTitle>

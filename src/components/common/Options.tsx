@@ -5,7 +5,9 @@ interface PropsOptions {
   remove: VoidFunction;
 }
 
+
 const Options: FC<PropsOptions> = ({ edit, remove }) => {
+  // Esta funcion nos permite editar o eliminar tareas
   return (
     <div className="flex gap-5">
       <svg
@@ -17,23 +19,22 @@ const Options: FC<PropsOptions> = ({ edit, remove }) => {
         strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="cursor-pointer hover:stroke-blue-500"
+        className="cursor-pointer hover:stroke-blue-800 hover:stroke-2"
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
         <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
       </svg>
-
       <svg
         width="35"
         height="35"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="cursor-pointer hover:stroke-green-500"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        className="cursor-pointer hover:stroke-cyan-800 hover:stroke-2"
         onClick={edit}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -50,7 +51,7 @@ const Options: FC<PropsOptions> = ({ edit, remove }) => {
         strokeWidth="1"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="cursor-pointer hover:stroke-red-500"
+        className="cursor-pointer hover:stroke-red-800 hover:stroke-2"
         onClick={remove}
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />

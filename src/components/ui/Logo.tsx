@@ -11,7 +11,7 @@ const Logo = () => {
         />
       </div>
       <h3 className="text-xl font-bold">
-        <span className="inline-block mr-1 text-white">Max</span>
+        <span className="inline-block mr-1 text-[#3A5B9D]">Max</span>
         Power
       </h3>
     </div>

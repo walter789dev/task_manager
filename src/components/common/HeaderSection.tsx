@@ -5,6 +5,7 @@ interface PropsHeader {
   title: string;
 }
 
+
 const HeaderSection: FC<PropsHeader> = ({ image, title }) => {
   const date = new Date();
   const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;

@@ -17,13 +17,15 @@ const ItemNavigate: FC<PropsItem> = ({
   children,
 }) => {
   return (
-    <li className={`mt-3 font-semibold ${children && "flex justify-between items-center"}`}>
+    <li
+      className={`mt-3 font-semibold ${
+        children && "flex justify-between items-center"
+      }`}
+    >
       {link ? (
         <NavLink
           className={({ isActive }) =>
-            isActive
-              ? "flex gap-3 text-dark"
-              : "flex gap-3 text-white"
+            isActive ? "flex gap-3 text-dark" : "flex gap-3 text-[#969090]"
           }
           to={url}
         >
@@ -31,7 +33,7 @@ const ItemNavigate: FC<PropsItem> = ({
           {text}
         </NavLink>
       ) : (
-        <span className="flex gap-3 text-white">
+        <span className="flex gap-3 text-[#969090]">
           <img src={svg} alt="Icono de enlace" />
           {text}
         </span>

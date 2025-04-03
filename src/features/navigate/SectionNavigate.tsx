@@ -8,16 +8,16 @@ interface SectionProp {
 
 const SectionNavigate: FC<SectionProp> = ({ logo, dark, children }) => {
   return (
-    <section className="flex flex-col justify-between items-center w-[20%] max-w-[210px] min-h-screen bg-[#6a71a8] py-6 px-4">
+    <section className="flex flex-col justify-between items-center w-[20%] max-w-[210px] min-h-screen bg-[#F9F9F9] py-6 px-4">
       {logo}
       <div className="w-full h-[65vh]">
         <div className="flex justify-between">
-          <h3 className="text-white font-semibold">Proyect</h3>
+          <h3 className="text-[#969090] font-semibold">Proyect</h3>
           <svg
             width="20"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#fff"
+            stroke="#969090"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
