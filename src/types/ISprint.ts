@@ -1,7 +1,7 @@
 import { Task } from "./ITask";
 
 export interface Sprint {
-  id: string;
+  id?: string;
   nombre: string;
   fechaInicio: string;
   fechaFinal: string;

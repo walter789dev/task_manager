@@ -1,34 +1,40 @@
 import TableBacklog from "../../features/backlog/tableBacklog/TableBacklog";
 import fondoBacklog from "../../assets/images/fondo-backlog.webp";
-import HeaderSection from "../common/HeaderSection";
+import HeaderSection from "../common/Header";
 import TaskTitle from "../common/TaskTitle";
-import FormBacklog from "../../features/backlog/formBacklog/FormBacklog";
-import { useState } from "react";
-import Button from "../ui/Button";
 import { Task } from "../../types/ITask";
+import FormBacklog from "../common/Form";
+import { useTaskList } from "../../hooks/useTaskList";
+import { useModal } from "../../hooks/useModal";
 
 const Backlog = () => {
-  const [modal, setModal] = useState(false);
-  const [editTask, setEditTask] = useState<Task | null>(null);
+  const { createTaskBacklog, modifyTaskBacklog } = useTaskList();
+  const { open, editTask, setOpen } = useModal();
 
-  const showModal = () => {
-    setModal((state) => !state);
-  };
-
-  const resetModal = () => {
-    setEditTask(null);
-    showModal();
+  const handlerSubmit = (task: Task) => {
+    if (!("id" in task)) {
+      createTaskBacklog({
+        ...task,
+        id: Date.now().toString(),
+      });
+    } else {
+      modifyTaskBacklog(task);
+    }
+    setOpen();
   };
 
   return (
     <div className="grow">
       <HeaderSection title="My Backlog" image={fondoBacklog} />
-      <TaskTitle title="Backlog">
-        <Button event={() => {}} text="Enviar Tarea" type="secondary" />
-        <Button event={resetModal} text="Añadir Tarea" type="primary" />
-      </TaskTitle>
-      <TableBacklog openModal={showModal} setEditTask={setEditTask} />
-      {modal && <FormBacklog closeModal={showModal} editTask={editTask} />}
+      <TaskTitle title="Backlog" openModal={setOpen} />
+      <TableBacklog setOpen={setOpen} />
+      {open && (
+        <FormBacklog
+          closeModal={setOpen}
+          editTask={editTask as Task}
+          handlerSubmit={handlerSubmit}
+        />
+      )}
     </div>
   );
 };

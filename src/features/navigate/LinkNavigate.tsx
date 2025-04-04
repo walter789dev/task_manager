@@ -10,7 +10,7 @@ interface PropsItem {
 
 const LinkNavigate: FC<PropsItem> = ({ text, url = "/", children, icon }) => {
   return (
-    <li className="my-3 font-semibold">
+    <li className="my-1 font-semibold">
       <NavLink
         className={({ isActive }) =>
           isActive
@@ -22,7 +22,7 @@ const LinkNavigate: FC<PropsItem> = ({ text, url = "/", children, icon }) => {
         {icon && icon()}
         <span className="text-start truncate">{text}</span>
       </NavLink>
-      {children && <div className="mx-8 mt-2">{children}</div>}
+      {children && <div className="mx-8 mt-3">{children}</div>}
     </li>
   );
 };

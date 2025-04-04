@@ -6,7 +6,7 @@ interface PropsHeader {
 }
 
 
-const HeaderSection: FC<PropsHeader> = ({ image, title }) => {
+const Header: FC<PropsHeader> = ({ image, title }) => {
   const date = new Date();
   const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 
@@ -30,4 +30,4 @@ const HeaderSection: FC<PropsHeader> = ({ image, title }) => {
   );
 };
 
-export default HeaderSection;
+export default Header;

@@ -1,7 +1,15 @@
+import { FC } from "react";
 import { useActiveSprint } from "../../../hooks/useActiveSprint";
+import { Task } from "../../../types/ITask";
 import ColumnStateTask from "./ColumnStateTask";
+import TaskSprint from "./TaskSprint";
+import Options from "../../../components/common/Options";
 
-const TableStateTask = () => {
+interface PropsSTask {
+  setOpen: (task?: Task) => void;
+}
+
+const TableStateTask: FC<PropsSTask> = ({ setOpen }) => {
   const { active } = useActiveSprint();
 
   const taskPending = active?.tareas.filter(
@@ -16,9 +24,39 @@ const TableStateTask = () => {
 
   return (
     <section className="flex justify-around w-[90%] mx-auto">
-      <ColumnStateTask title="Pendiente" tasks={taskPending} />
-      <ColumnStateTask title="En Progreso" tasks={taskProcess} />
-      <ColumnStateTask title="Completado" tasks={taskComplete} />
+      <ColumnStateTask title="Pendiente">
+        {taskPending && taskPending.length ? (
+          taskPending.map((task) => (
+            <TaskSprint key={task.id} task={task}>
+              <Options size="36" edit={() => setOpen(task)} remove={() => {}} />
+            </TaskSprint>
+          ))
+        ) : (
+          <p className="p-2 text-center">No hay tareas</p>
+        )}
+      </ColumnStateTask>
+      <ColumnStateTask title="En Progreso">
+        {taskProcess && taskProcess.length ? (
+          taskProcess.map((task) => (
+            <TaskSprint key={task.id} task={task}>
+              <Options size="36" edit={() => setOpen(task)} remove={() => {}} />
+            </TaskSprint>
+          ))
+        ) : (
+          <p className="p-2 text-center">No hay tareas</p>
+        )}
+      </ColumnStateTask>
+      <ColumnStateTask title="Completado">
+        {taskComplete && taskComplete.length ? (
+          taskComplete.map((task) => (
+            <TaskSprint key={task.id} task={task}>
+              <Options size="36" edit={() => setOpen(task)} remove={() => {}} />
+            </TaskSprint>
+          ))
+        ) : (
+          <p className="p-2 text-center">No hay tareas</p>
+        )}
+      </ColumnStateTask>
     </section>
   );
 };

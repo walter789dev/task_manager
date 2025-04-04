@@ -8,7 +8,6 @@ interface PropsOptions {
 }
 
 const Options: FC<PropsOptions> = ({ see, edit, remove, size }) => {
-  // Esta funcion nos permite editar o eliminar tareas
   return (
     <>
       <div className="flex gap-2">

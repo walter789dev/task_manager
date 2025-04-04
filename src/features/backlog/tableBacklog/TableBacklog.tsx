@@ -7,18 +7,12 @@ import { useTaskList } from "../../../hooks/useTaskList";
 import ModalData from "../../../components/ui/ModalData";
 
 interface PropsTable {
-  openModal: VoidFunction;
-  setEditTask: (task: Task) => void;
+  setOpen: (task?: Task) => void;
 }
 
-const TableBacklog: FC<PropsTable> = ({ openModal, setEditTask }) => {
+const TableBacklog: FC<PropsTable> = ({ setOpen }) => {
   const [showData, setShowData] = useState<Task | null>(null);
   const { taskBacklog, getAllTaskBacklog, deleteTaskBacklog } = useTaskList();
-
-  const handlerEditTask = (task: Task) => {
-    openModal();
-    setEditTask(task);
-  };
 
   const handlerDeleteTask = (id: string) => {
     Swal.fire({
@@ -55,7 +49,7 @@ const TableBacklog: FC<PropsTable> = ({ openModal, setEditTask }) => {
               <Options
                 size="40"
                 see={() => setShowData(task)}
-                edit={() => handlerEditTask(task)}
+                edit={() => setOpen(task)}
                 remove={() => handlerDeleteTask(task.id!)}
               />
             </TaskTableBacklog>

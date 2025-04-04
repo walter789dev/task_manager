@@ -22,7 +22,8 @@ export const useSprintList = () => {
 
   const createSprint = async (sprint: Sprint) => {
     const { createItem } = helpHttp<Sprint>(URL_SPRINT);
-    const isOk = await createItem(sprint);
+      const isOk = await createItem(sprint);
+      console.log("Hola")
 
     if (isOk) {
       addSprint(sprint);

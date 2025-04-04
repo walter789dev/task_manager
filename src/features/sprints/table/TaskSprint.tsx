@@ -1,12 +1,12 @@
-import { FC } from "react";
-import Options from "../../../components/common/Options";
+import { FC, ReactNode } from "react";
 import { Task } from "../../../types/ITask";
 
 interface PropsTS {
   task: Task | undefined;
+  children: ReactNode;
 }
 
-const TaskSprint: FC<PropsTS> = ({ task }) => {
+const TaskSprint: FC<PropsTS> = ({ task, children }) => {
   return (
     <div className="mx-3 px-4 py-3 text-[14px] bg-[#E2EAF7] rounded-2xl">
       <span className="block">Titulo: {task?.titulo}</span>
@@ -16,7 +16,7 @@ const TaskSprint: FC<PropsTS> = ({ task }) => {
         <button className="px-3 py-1 border rounded-xl cursor-pointer">
           Enviar al backlog
         </button>
-        <Options size="36" edit={() => {}} remove={() => {}} />
+        {children}
       </div>
     </div>
   );

@@ -1,13 +1,12 @@
-import { FC, useEffect } from "react";
-import { Input } from "../../../components/ui/Input";
-import Button from "../../../components/ui/Button";
-import { useForm } from "../../../hooks/useForm";
-import { Task } from "../../../types/ITask";
-import { useTaskList } from "../../../hooks/useTaskList";
+import { ChangeEvent, FC, useEffect, useState } from "react";
+import { Input } from "../ui/Input";
+import Button from "../ui/Button";
+import { Task } from "../../types/ITask";
 
 interface PropsForm {
-  editTask: Task | null | undefined;
+  editTask: Task | null;
   closeModal: VoidFunction;
+  handlerSubmit: (task: Task) => void;
 }
 
 const initial: Task = {
@@ -17,20 +16,15 @@ const initial: Task = {
   fechaLimite: "",
 };
 
-const FormBacklog: FC<PropsForm> = ({ closeModal, editTask }) => {
-  const { dataForm, setDataForm, handlerDataForm } = useForm(initial);
-  const { createTaskBacklog, modifyTaskBacklog } = useTaskList();
+const Form: FC<PropsForm> = ({ closeModal, editTask, handlerSubmit }) => {
+  const [dataForm, setDataForm] = useState<Task>(initial);
 
-  const handlerSubmitData = () => {
-    if (!("id" in dataForm)) {
-      createTaskBacklog({
-        ...dataForm,
-        id: Date.now().toString(),
-      });
-    } else {
-      modifyTaskBacklog(dataForm);
-    }
-    closeModal();
+  const handlerDataForm = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setDataForm((state) => ({
+      ...state,
+      [name]: value,
+    }));
   };
 
   useEffect(() => {
@@ -65,9 +59,9 @@ const FormBacklog: FC<PropsForm> = ({ closeModal, editTask }) => {
         />
 
         <div className="flex justify-center mt-3 gap-10">
-          <Button event={closeModal} text="Cancelar" type="secondary" />
+          <Button event={() => closeModal()} text="Cancelar" type="secondary" />
           <Button
-            event={handlerSubmitData}
+            event={() => handlerSubmit(dataForm)}
             text="Enviar Tarea"
             type="primary"
           />
@@ -77,4 +71,4 @@ const FormBacklog: FC<PropsForm> = ({ closeModal, editTask }) => {
   );
 };
 
-export default FormBacklog;
+export default Form;

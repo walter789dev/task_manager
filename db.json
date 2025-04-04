@@ -32,9 +32,9 @@
   "sprints": [
     {
       "id": "1",
-      "fechaInicio": "2025-10-10",
+      "fechaInicio": "2025-10-08",
       "fechaFinal": "2025-12-12",
-      "nombre": "Sprint Ejemplo",
+      "nombre": "Sprint Editado",
       "tareas": [
         {
           "id": "20",
@@ -44,6 +44,13 @@
           "estado": "pendiente"
         }
       ]
+    },
+    {
+      "id": "1743797779541",
+      "nombre": "Anualizado",
+      "fechaInicio": "2025-04-25",
+      "fechaFinal": "2025-04-12",
+      "tareas": []
     }
   ]
 }
