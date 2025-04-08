@@ -11,20 +11,32 @@ import { useModal } from "../../hooks/useModal";
 
 const Sprint = () => {
   const params = useParams();
-  const { active, setActive } = useActiveSprint();
+  const { active, addTask, editTaskS, getActive } = useActiveSprint();
   const { open, editTask, setOpen } = useModal();
 
-  const handlerSubmit = () => {};
+  const handlerSubmit = (task: Task) => {
+    if (!("id" in task)) {
+      addTask({
+        ...task,
+        id: Date.now().toString(),
+      });
+    } else {
+      editTaskS(task);
+    }
+    setOpen();
+  };
 
   useEffect(() => {
-    if (params) setActive(params.id!);
+    getActive();
   }, [params]);
 
   return (
-    <div className="grow">
-      <HeaderSection title={active?.nombre!} image={FondoSprint} />
-      <TaskTitle title={active?.nombre!} openModal={setOpen} />
-      <TableStateTask setOpen={setOpen} />
+    <>
+      <div className="grow">
+        <HeaderSection title={active?.nombre!} image={FondoSprint} />
+        <TaskTitle title={active?.nombre!} openModal={setOpen} />
+        <TableStateTask active={active} setOpen={setOpen} />
+      </div>
       {open && (
         <FormBacklog
           closeModal={setOpen}
@@ -32,7 +44,7 @@ const Sprint = () => {
           handlerSubmit={handlerSubmit}
         />
       )}
-    </div>
+    </>
   );
 };
 

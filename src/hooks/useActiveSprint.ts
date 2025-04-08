@@ -1,15 +1,26 @@
 import { useShallow } from "zustand/shallow";
-import { useStoreActive } from "../store/useStoreActive";
 import { Task } from "../types/ITask";
 import { helpHttp } from "../helpers/helpHttp";
 import { useStoreSprint } from "../store/useStoreSprints";
+import { useParams } from "react-router";
+import { Sprint } from "../types/ISprint";
 
 export const useActiveSprint = () => {
-  const URL_SPRINT = import.meta.env.URL_SPRINT;
-  const sprints = useStoreSprint((state) => state.sprints);
-  const { active, setActiveSprint } = useStoreActive(
+  const params = useParams();
+  const URL_SPRINT = import.meta.env.VITE_URL_SPRINT;
+
+  const { sprints, active, setActiveSprint } = useStoreSprint(
     useShallow((state) => ({ ...state }))
   );
+
+  const getActive = async () => {
+    const { getItem } = helpHttp<Sprint>(URL_SPRINT);
+
+    if (params.id) {
+      const item = await getItem(params.id);
+      if (item) setActiveSprint(item);
+    }
+  };
 
   const setActive = (id: string) => {
     const activeSprint = sprints.find((sprint) => sprint.id === id);
@@ -17,19 +28,37 @@ export const useActiveSprint = () => {
   };
 
   const addTask = async (task: Task) => {
-    const { createItem } = helpHttp(URL_SPRINT + active?.id);
+    const { updateItem } = helpHttp(URL_SPRINT);
     const newActive = structuredClone(active);
     newActive?.tareas.push(task);
 
     if (newActive) {
-      const req = await createItem(newActive);
+      const req = await updateItem(newActive);
+      if (req) setActiveSprint(newActive);
+    }
+  };
+
+  const editTaskS = async (newTask: Task) => {
+    const { updateItem } = helpHttp(URL_SPRINT);
+    let newActive = structuredClone(active);
+    const tareas = newActive?.tareas.map((task) =>
+      task.id === newTask.id ? newTask : task
+    );
+
+    if (newActive) {
+      const req = await updateItem({
+        ...newActive,
+        tareas,
+      });
       if (req) setActiveSprint(newActive);
     }
   };
 
   return {
     active,
+    getActive,
     setActive,
     addTask,
+    editTaskS,
   };
 };

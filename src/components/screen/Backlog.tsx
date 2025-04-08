@@ -24,10 +24,12 @@ const Backlog = () => {
   };
 
   return (
-    <div className="grow">
-      <HeaderSection title="My Backlog" image={fondoBacklog} />
-      <TaskTitle title="Backlog" openModal={setOpen} />
-      <TableBacklog setOpen={setOpen} />
+    <>
+      <div className="grow">
+        <HeaderSection title="My Backlog" image={fondoBacklog} />
+        <TaskTitle title="Backlog" openModal={setOpen} />
+        <TableBacklog setOpen={setOpen} />
+      </div>
       {open && (
         <FormBacklog
           closeModal={setOpen}
@@ -35,7 +37,7 @@ const Backlog = () => {
           handlerSubmit={handlerSubmit}
         />
       )}
-    </div>
+    </>
   );
 };
 

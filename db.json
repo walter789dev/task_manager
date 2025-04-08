@@ -42,6 +42,20 @@
           "descripcion": "El primo de monguito",
           "fechaLimite": "2025-04-15",
           "estado": "pendiente"
+        },
+        {
+          "titulo": "dsfdsfsd",
+          "descripcion": "dsfdsfds",
+          "estado": "pendiente",
+          "fechaLimite": "2025-04-19",
+          "id": "1743801198093"
+        },
+        {
+          "titulo": "ererere",
+          "descripcion": "ererere",
+          "estado": "pendiente",
+          "fechaLimite": "2025-04-18",
+          "id": "1743805551602"
         }
       ]
     },
@@ -50,7 +64,29 @@
       "nombre": "Anualizado",
       "fechaInicio": "2025-04-25",
       "fechaFinal": "2025-04-12",
-      "tareas": []
+      "tareas": [
+        {
+          "titulo": "Hello Everyone",
+          "descripcion": "OMAI GAA",
+          "estado": "pendiente",
+          "fechaLimite": "2025-04-25",
+          "id": "1743800355700"
+        },
+        {
+          "titulo": "rtretretretret",
+          "descripcion": "rtretrer",
+          "estado": "pendiente",
+          "fechaLimite": "2025-04-09",
+          "id": "1743800425175"
+        },
+        {
+          "titulo": "dsfssdw3erwe",
+          "descripcion": "ewrewrwe",
+          "estado": "pendiente",
+          "fechaLimite": "2025-04-01",
+          "id": "1743804444530"
+        }
+      ]
     }
   ]
 }

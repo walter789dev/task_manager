@@ -10,14 +10,19 @@ interface PropsData {
 const ModalData: FC<PropsData> = ({ data, close }) => {
   return (
     <div className="absolute inset-0 flex justify-center items-center bg-[#0002]">
-      <div className="flex flex-col gap-5 w-[25vw] min-h-[30vh] bg-white rounded-xl">
-        <div>
-          <h2 className="p-2 text-center text-2xl font-semibold">Tarea</h2>
-          {Object.entries(data).map(([key, value]) => (
-            <p className="text-center capitalize">
-              {key}: {value}
-            </p>
-          ))}
+      <div className="flex flex-col gap-5 w-[25vw] min-h-[30vh] py-5 bg-white rounded-xl scale-up-center">
+        <div className="flex flex-col items-center justify-center grow">
+          <h2 className="pb-2 text-center text-2xl font-semibold">
+            Información
+          </h2>
+          {Object.entries(data).map(([key, value]) => {
+            if (key !== "id" && key !== "tareas")
+              return (
+                <p className="text-center capitalize">
+                  {key}: {value}
+                </p>
+              );
+          })}
         </div>
         <button
           className="mt-2 mx-auto py-1 px-5 border rounded-xl cursor-pointer"

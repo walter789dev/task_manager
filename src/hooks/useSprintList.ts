@@ -5,12 +5,14 @@ import { Sprint } from "../types/ISprint";
 
 export const useSprintList = () => {
   const URL_SPRINT = import.meta.env.VITE_URL_SPRINT;
+
   const { sprints, addSprint, editSprint, removeSprint, setAllSprints } =
     useStoreSprint(
       useShallow((state) => ({
         ...state,
       }))
     );
+
   const getAllSprints = async () => {
     const { getAllItems } = helpHttp<Sprint[]>(URL_SPRINT);
     const items = await getAllItems();
@@ -22,8 +24,7 @@ export const useSprintList = () => {
 
   const createSprint = async (sprint: Sprint) => {
     const { createItem } = helpHttp<Sprint>(URL_SPRINT);
-      const isOk = await createItem(sprint);
-      console.log("Hola")
+    const isOk = await createItem(sprint);
 
     if (isOk) {
       addSprint(sprint);

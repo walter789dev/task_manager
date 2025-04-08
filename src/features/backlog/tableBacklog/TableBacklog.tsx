@@ -44,16 +44,17 @@ const TableBacklog: FC<PropsTable> = ({ setOpen }) => {
           <span>Opciones</span>
         </div>
         <div>
-          {taskBacklog.map((task: Task) => (
-            <TaskTableBacklog key={task.id} task={task}>
-              <Options
-                size="40"
-                see={() => setShowData(task)}
-                edit={() => setOpen(task)}
-                remove={() => handlerDeleteTask(task.id!)}
-              />
-            </TaskTableBacklog>
-          ))}
+          {taskBacklog.length &&
+            taskBacklog.map((task: Task) => (
+              <TaskTableBacklog key={task.id} task={task}>
+                <Options
+                  size="40"
+                  see={() => setShowData(task)}
+                  edit={() => setOpen(task)}
+                  remove={() => handlerDeleteTask(task.id!)}
+                />
+              </TaskTableBacklog>
+            ))}
         </div>
       </section>
       {showData && <ModalData data={showData} close={setShowData} />}

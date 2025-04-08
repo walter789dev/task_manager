@@ -1,4 +1,17 @@
 export const helpHttp = <T extends object>(API_URL: string) => {
+  const getItem = async (id: string) => {
+    try {
+      const preResult = await fetch(API_URL + "/" + id);
+      if (!preResult.ok) {
+        throw new Error("No se han podido obtener los datos solicitados");
+      }
+      const item: T = await preResult.json();
+      return item;
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const getAllItems = async () => {
     try {
       const preResult = await fetch(API_URL);
@@ -74,6 +87,7 @@ export const helpHttp = <T extends object>(API_URL: string) => {
   };
 
   return {
+    getItem,
     getAllItems,
     createItem,
     updateItem,

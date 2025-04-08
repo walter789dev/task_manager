@@ -3,6 +3,8 @@ import { StoreSprint } from "../types/ISprint";
 
 export const useStoreSprint = create<StoreSprint>((set) => ({
   sprints: [],
+  active: null,
+  setActiveSprint: (sprint) => set(() => ({ active: sprint })),
   setAllSprints: (allSprints) =>
     set(() => ({
       sprints: allSprints,

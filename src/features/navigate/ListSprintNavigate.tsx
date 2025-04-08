@@ -6,9 +6,10 @@ import LinkNavigate from "./LinkNavigate";
 interface PropsLSprint {
   sprints: Sprint[];
   setOpen: (sprint?: Sprint) => void;
+  setData: (sprint: Sprint) => void;
 }
 
-const ListSprintNavigate: FC<PropsLSprint> = ({ sprints, setOpen }) => {
+const ListSprintNavigate: FC<PropsLSprint> = ({ sprints, setOpen, setData }) => {
   return (
     <ul className="flex flex-col mt-4 gap-1">
       {sprints.map((sprint) => (
@@ -33,7 +34,7 @@ const ListSprintNavigate: FC<PropsLSprint> = ({ sprints, setOpen }) => {
             </svg>
           )}
         >
-          <Options size="35" edit={() => setOpen(sprint)} remove={() => {}} />
+          <Options size="35" see={() => setData(sprint)} edit={() => setOpen(sprint)} remove={() => {}} />
         </LinkNavigate>
       ))}
     </ul>

@@ -1,63 +1,61 @@
-import { FC } from "react";
-import { useActiveSprint } from "../../../hooks/useActiveSprint";
+import { FC, useState } from "react";
 import { Task } from "../../../types/ITask";
 import ColumnStateTask from "./ColumnStateTask";
 import TaskSprint from "./TaskSprint";
 import Options from "../../../components/common/Options";
+import { Sprint } from "../../../types/ISprint";
+import ModalData from "../../../components/ui/ModalData";
 
 interface PropsSTask {
   setOpen: (task?: Task) => void;
+  active: Sprint | null;
 }
 
-const TableStateTask: FC<PropsSTask> = ({ setOpen }) => {
-  const { active } = useActiveSprint();
+const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
+  const [showData, setShowData] = useState<Task | null>(null);
 
-  const taskPending = active?.tareas.filter(
-    (task) => task.estado === "pendiente"
-  );
-  const taskProcess = active?.tareas.filter(
-    (task) => task.estado === "en progreso"
-  );
-  const taskComplete = active?.tareas.filter(
-    (task) => task.estado === "completado"
-  );
+  if (active == null) return;
+
+  const listTask = [
+    {
+      nombre: "Pendiente",
+      tareas: active?.tareas.filter((task) => task.estado === "pendiente"),
+    },
+    {
+      nombre: "En Progreso",
+      tareas: active?.tareas.filter((task) => task.estado === "en progreso"),
+    },
+    {
+      nombre: "Completado",
+      tareas: active?.tareas.filter((task) => task.estado === "completado"),
+    },
+  ];
 
   return (
-    <section className="flex justify-around w-[90%] mx-auto">
-      <ColumnStateTask title="Pendiente">
-        {taskPending && taskPending.length ? (
-          taskPending.map((task) => (
-            <TaskSprint key={task.id} task={task}>
-              <Options size="36" edit={() => setOpen(task)} remove={() => {}} />
-            </TaskSprint>
-          ))
-        ) : (
-          <p className="p-2 text-center">No hay tareas</p>
-        )}
-      </ColumnStateTask>
-      <ColumnStateTask title="En Progreso">
-        {taskProcess && taskProcess.length ? (
-          taskProcess.map((task) => (
-            <TaskSprint key={task.id} task={task}>
-              <Options size="36" edit={() => setOpen(task)} remove={() => {}} />
-            </TaskSprint>
-          ))
-        ) : (
-          <p className="p-2 text-center">No hay tareas</p>
-        )}
-      </ColumnStateTask>
-      <ColumnStateTask title="Completado">
-        {taskComplete && taskComplete.length ? (
-          taskComplete.map((task) => (
-            <TaskSprint key={task.id} task={task}>
-              <Options size="36" edit={() => setOpen(task)} remove={() => {}} />
-            </TaskSprint>
-          ))
-        ) : (
-          <p className="p-2 text-center">No hay tareas</p>
-        )}
-      </ColumnStateTask>
-    </section>
+    <>
+      <section className="flex justify-around w-[90%] mx-auto">
+        {listTask &&
+          listTask.map((list) => (
+            <ColumnStateTask title={list.nombre}>
+              {list.tareas.length ? (
+                list.tareas.map((task) => (
+                  <TaskSprint key={task.id} task={task}>
+                    <Options
+                      size="36"
+                      see={() => setShowData(task)}
+                      edit={() => setOpen(task)}
+                      remove={() => {}}
+                    />
+                  </TaskSprint>
+                ))
+              ) : (
+                <p className="p-2 text-center">No hay tareas</p>
+              )}
+            </ColumnStateTask>
+          ))}
+      </section>
+      {showData && <ModalData data={showData} close={setShowData} />}
+    </>
   );
 };
 
