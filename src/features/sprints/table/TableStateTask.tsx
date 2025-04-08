@@ -35,11 +35,11 @@ const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
     <>
       <section className="flex justify-around w-[90%] mx-auto">
         {listTask &&
-          listTask.map((list) => (
-            <ColumnStateTask title={list.nombre}>
-              {list.tareas.length ? (
-                list.tareas.map((task) => (
-                  <TaskSprint key={task.id} task={task}>
+          listTask.map(({ nombre, tareas }) => (
+            <ColumnStateTask title={nombre}>
+              {tareas.length ? (
+                tareas.map((task) => (
+                  <TaskSprint key={task.id} title={nombre} task={task}>
                     <Options
                       size="36"
                       see={() => setShowData(task)}
@@ -54,7 +54,7 @@ const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
             </ColumnStateTask>
           ))}
       </section>
-      {showData && <ModalData data={showData} close={setShowData} />}
+      {showData && <ModalData title="Tarea" data={showData} close={setShowData} />}
     </>
   );
 };

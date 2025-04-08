@@ -3,23 +3,22 @@ import { Sprint } from "../../types/ISprint";
 import { Task } from "../../types/ITask";
 
 interface PropsData {
+  title: string;
   data: Omit<Task, "id"> | Omit<Sprint, "tareas">;
   close: (state: null) => void;
 }
 
-const ModalData: FC<PropsData> = ({ data, close }) => {
+const ModalData: FC<PropsData> = ({ title, data, close }) => {
   return (
     <div className="absolute inset-0 flex justify-center items-center bg-[#0002]">
       <div className="flex flex-col gap-5 w-[25vw] min-h-[30vh] py-5 bg-white rounded-xl scale-up-center">
         <div className="flex flex-col items-center justify-center grow">
-          <h2 className="pb-2 text-center text-2xl font-semibold">
-            Información
-          </h2>
+          <h2 className="pb-4 text-center text-2xl font-semibold">{title}</h2>
           {Object.entries(data).map(([key, value]) => {
             if (key !== "id" && key !== "tareas")
               return (
                 <p className="text-center capitalize">
-                  {key}: {value}
+                  <span>{key}:</span> {value}
                 </p>
               );
           })}

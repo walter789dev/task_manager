@@ -1,13 +1,6 @@
 {
   "backlog": [
     {
-      "id": "1",
-      "titulo": "Mondongo",
-      "descripcion": "Mondongo",
-      "fechaLimite": "2026-11-14",
-      "estado": "pendiente"
-    },
-    {
       "id": "6",
       "titulo": "Monguito",
       "descripcion": "Este es el hijo de mondongo",
@@ -41,12 +34,12 @@
           "titulo": "Mango",
           "descripcion": "El primo de monguito",
           "fechaLimite": "2025-04-15",
-          "estado": "pendiente"
+          "estado": "en progreso"
         },
         {
           "titulo": "dsfdsfsd",
           "descripcion": "dsfdsfds",
-          "estado": "pendiente",
+          "estado": "completado",
           "fechaLimite": "2025-04-19",
           "id": "1743801198093"
         },
@@ -56,6 +49,13 @@
           "estado": "pendiente",
           "fechaLimite": "2025-04-18",
           "id": "1743805551602"
+        },
+        {
+          "id": "1",
+          "titulo": "Mondongo",
+          "descripcion": "Mondongo",
+          "fechaLimite": "2026-11-14",
+          "estado": "pendiente"
         }
       ]
     },
@@ -68,7 +68,7 @@
         {
           "titulo": "Hello Everyone",
           "descripcion": "OMAI GAA",
-          "estado": "pendiente",
+          "estado": "en progreso",
           "fechaLimite": "2025-04-25",
           "id": "1743800355700"
         },

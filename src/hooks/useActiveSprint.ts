@@ -4,14 +4,16 @@ import { helpHttp } from "../helpers/helpHttp";
 import { useStoreSprint } from "../store/useStoreSprints";
 import { useParams } from "react-router";
 import { Sprint } from "../types/ISprint";
+import { useStoreActive } from "../store/useStoreActive";
 
 export const useActiveSprint = () => {
   const params = useParams();
   const URL_SPRINT = import.meta.env.VITE_URL_SPRINT;
 
-  const { sprints, active, setActiveSprint } = useStoreSprint(
+  const { active, setActiveSprint } = useStoreActive(
     useShallow((state) => ({ ...state }))
   );
+  const sprints = useStoreSprint((state) => state.sprints);
 
   const getActive = async () => {
     const { getItem } = helpHttp<Sprint>(URL_SPRINT);

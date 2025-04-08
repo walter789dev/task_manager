@@ -10,8 +10,6 @@ export interface Sprint {
 
 export interface StoreSprint {
   sprints: Sprint[] | [];
-  active: Sprint | null;
-  setActiveSprint: (sprint: Sprint) => void;
   setAllSprints: (allSprint: Sprint[]) => void;
   addSprint: (sprint: Sprint) => void;
   editSprint: (sprint: Sprint) => void;

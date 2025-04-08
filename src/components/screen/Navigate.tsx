@@ -59,7 +59,7 @@ const Navigate = () => {
           handlerSubmit={handlerSubmit}
         />
       )}
-      {showData && <ModalData data={showData} close={setShowData} />}
+      {showData && <ModalData title="Sprint" data={showData} close={setShowData} />}
     </>
   );
 };
