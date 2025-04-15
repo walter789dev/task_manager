@@ -2,6 +2,9 @@ import { FC } from "react";
 import Options from "../../components/common/Options";
 import { Sprint } from "../../types/ISprint";
 import LinkNavigate from "./LinkNavigate";
+import { useSprintList } from "../../hooks/useSprintList";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 interface PropsLSprint {
   sprints: Sprint[];
@@ -9,7 +12,30 @@ interface PropsLSprint {
   setData: (sprint: Sprint) => void;
 }
 
-const ListSprintNavigate: FC<PropsLSprint> = ({ sprints, setOpen, setData }) => {
+const ListSprintNavigate: FC<PropsLSprint> = ({
+  sprints,
+  setOpen,
+  setData,
+}) => {
+  const { deleteSprint } = useSprintList();
+  const navigate = useNavigate();
+
+  const handlerDelete = (id: string) => {
+    Swal.fire({
+      title: "¿Estas seguro/a de eliminar este sprint?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "¡Si, quiero eliminarla!",
+      cancelButtonText: "Quizas más tarde",
+      confirmButtonColor: "#3a5b9d",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteSprint(id);
+        navigate("/");
+      }
+    });
+  };
+
   return (
     <ul className="flex flex-col mt-4 gap-1">
       {sprints.map((sprint) => (
@@ -34,7 +60,12 @@ const ListSprintNavigate: FC<PropsLSprint> = ({ sprints, setOpen, setData }) => 
             </svg>
           )}
         >
-          <Options size="35" see={() => setData(sprint)} edit={() => setOpen(sprint)} remove={() => {}} />
+          <Options
+            size="35"
+            see={() => setData(sprint)}
+            edit={() => setOpen(sprint)}
+            remove={() => handlerDelete(sprint.id!)}
+          />
         </LinkNavigate>
       ))}
     </ul>

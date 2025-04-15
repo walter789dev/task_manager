@@ -6,8 +6,8 @@ import { useTaskList } from "./useTaskList";
 
 export const useMoveTask = () => {
   const URL_SPRINT = import.meta.env.VITE_URL_SPRINT;
-  const { deleteTaskBacklog } = useTaskList();
-  const { active } = useActiveSprint();
+  const { deleteTaskBacklog, createTaskBacklog } = useTaskList();
+  const { active, deleteTaskS } = useActiveSprint();
 
   const moveTaskToSprint = async (id: string, task: Task) => {
     const { getItem, updateItem } = helpHttp<Sprint>(URL_SPRINT);
@@ -20,7 +20,11 @@ export const useMoveTask = () => {
         deleteTaskBacklog(task.id!);
       }
     }
-  };
+    };
+    
+    const moveTaskToBacklog = () => {
+        
+    }
 
   const moveTaskState = async (
     id: string,

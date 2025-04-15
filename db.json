@@ -66,13 +66,6 @@
       "fechaFinal": "2025-04-12",
       "tareas": [
         {
-          "titulo": "Hello Everyone",
-          "descripcion": "OMAI GAA",
-          "estado": "en progreso",
-          "fechaLimite": "2025-04-25",
-          "id": "1743800355700"
-        },
-        {
           "titulo": "rtretretretret",
           "descripcion": "rtretrer",
           "estado": "pendiente",
@@ -82,7 +75,7 @@
         {
           "titulo": "dsfssdw3erwe",
           "descripcion": "ewrewrwe",
-          "estado": "pendiente",
+          "estado": "en progreso",
           "fechaLimite": "2025-04-01",
           "id": "1743804444530"
         }

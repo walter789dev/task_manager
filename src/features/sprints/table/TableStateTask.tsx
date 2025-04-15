@@ -5,6 +5,7 @@ import TaskSprint from "./TaskSprint";
 import Options from "../../../components/common/Options";
 import { Sprint } from "../../../types/ISprint";
 import ModalData from "../../../components/ui/ModalData";
+import { useActiveSprint } from "../../../hooks/useActiveSprint";
 
 interface PropsSTask {
   setOpen: (task?: Task) => void;
@@ -12,7 +13,8 @@ interface PropsSTask {
 }
 
 const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
-  const [showData, setShowData] = useState<Task | null>(null);
+    const [showData, setShowData] = useState<Task | null>(null);
+    const {deleteTaskS} = useActiveSprint()
 
   if (active == null) return;
 
@@ -44,7 +46,7 @@ const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
                       size="36"
                       see={() => setShowData(task)}
                       edit={() => setOpen(task)}
-                      remove={() => {}}
+                      remove={() => deleteTaskS(task)}
                     />
                   </TaskSprint>
                 ))

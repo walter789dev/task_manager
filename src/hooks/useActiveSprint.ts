@@ -7,20 +7,19 @@ import { Sprint } from "../types/ISprint";
 import { useStoreActive } from "../store/useStoreActive";
 
 export const useActiveSprint = () => {
-  const params = useParams();
   const URL_SPRINT = import.meta.env.VITE_URL_SPRINT;
+  const { getItem, updateItem } = helpHttp(URL_SPRINT);
+  const params = useParams();
 
+  const sprints = useStoreSprint((state) => state.sprints);
   const { active, setActiveSprint } = useStoreActive(
     useShallow((state) => ({ ...state }))
   );
-  const sprints = useStoreSprint((state) => state.sprints);
 
   const getActive = async () => {
-    const { getItem } = helpHttp<Sprint>(URL_SPRINT);
-
     if (params.id) {
       const item = await getItem(params.id);
-      if (item) setActiveSprint(item);
+      if (item) setActiveSprint(item as Sprint);
     }
   };
 
@@ -41,11 +40,23 @@ export const useActiveSprint = () => {
   };
 
   const editTaskS = async (newTask: Task) => {
-    const { updateItem } = helpHttp(URL_SPRINT);
     let newActive = structuredClone(active);
     const tareas = newActive?.tareas.map((task) =>
       task.id === newTask.id ? newTask : task
     );
+
+    if (newActive) {
+      const req = await updateItem({
+        ...newActive,
+        tareas,
+      });
+      if (req) setActiveSprint(newActive);
+    }
+  };
+
+  const deleteTaskS = async (newTask: Task) => {
+    let newActive = structuredClone(active);
+    const tareas = newActive?.tareas.filter((task) => task.id !== newTask.id);
 
     if (newActive) {
       const req = await updateItem({
@@ -62,5 +73,6 @@ export const useActiveSprint = () => {
     setActive,
     addTask,
     editTaskS,
+    deleteTaskS,
   };
 };

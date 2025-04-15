@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import { Task } from "../../../types/ITask";
-import MoveTask from "../moveTask";
+import MoveTask from '../MoveTask'
 
 interface PropsTS {
   task: Task | undefined;
