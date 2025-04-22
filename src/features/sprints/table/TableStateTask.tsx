@@ -38,7 +38,7 @@ const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
       <section className="flex justify-around w-[90%] mx-auto">
         {listTask &&
           listTask.map(({ nombre, tareas }) => (
-            <ColumnStateTask title={nombre}>
+            <ColumnStateTask key={nombre} title={nombre}>
               {tareas.length ? (
                 tareas.map((task) => (
                   <TaskSprint key={task.id} title={nombre} task={task}>

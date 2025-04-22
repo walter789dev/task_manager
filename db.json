@@ -15,11 +15,11 @@
       "estado": "pendiente"
     },
     {
-      "id": "1743524604475",
-      "titulo": "Mango",
-      "descripcion": "El primo de monguito",
-      "fechaLimite": "2025-04-15",
-      "estado": "pendiente"
+      "id": "1745345117753",
+      "titulo": "Laura",
+      "descripcion": "lorem",
+      "estado": "en progreso",
+      "fechaLimite": "2025-04-09"
     }
   ],
   "sprints": [
@@ -78,6 +78,20 @@
           "estado": "en progreso",
           "fechaLimite": "2025-04-01",
           "id": "1743804444530"
+        },
+        {
+          "id": "1743524604475",
+          "titulo": "Mango",
+          "descripcion": "El primo de monguito",
+          "fechaLimite": "2025-04-15",
+          "estado": "pendiente"
+        },
+        {
+          "id": "1745343770309",
+          "titulo": "Lorenzo",
+          "descripcion": "Lorem",
+          "estado": "completado",
+          "fechaLimite": ""
         }
       ]
     }

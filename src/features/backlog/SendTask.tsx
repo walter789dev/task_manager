@@ -53,8 +53,8 @@ const SendTask: FC<PropsSend> = ({ task }) => {
         <option value="">Selecciona un destino</option>
         {sprints &&
           sprints.length &&
-          sprints.map((sprint) => (
-            <option value={sprint.nombre}>{sprint.nombre}</option>
+          sprints.map((sprint, i) => (
+            <option key={i} value={sprint.nombre}>{sprint.nombre}</option>
           ))}
       </select>
     </div>
