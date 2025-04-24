@@ -3,6 +3,7 @@ import { useSprintList } from "../../hooks/useSprintList";
 import { Task } from "../../types/ITask";
 import Swal from "sweetalert2";
 import { useMoveTask } from "../../hooks/useMoveTask";
+import { Sprint } from "../../types/ISprint";
 
 interface PropsSend {
   task: Task;
@@ -32,7 +33,7 @@ const SendTask: FC<PropsSend> = ({ task }) => {
       }).then((result) => {
         if (result.isConfirmed) {
           const sprint = sprints.find(
-            (sprint) => sprint.nombre === selectValue
+            (sprint: Sprint) => sprint.nombre === selectValue
           );
           moveTaskToSprint(sprint?.id!, task);
         }
@@ -57,7 +58,7 @@ const SendTask: FC<PropsSend> = ({ task }) => {
         <option value="">Selecciona un destino</option>
         {sprints &&
           sprints.length &&
-          sprints.map((sprint, i) => (
+          sprints.map((sprint: Sprint, i: string) => (
             <option key={i} value={sprint.nombre}>
               {sprint.nombre}
             </option>

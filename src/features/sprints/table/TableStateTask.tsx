@@ -6,6 +6,7 @@ import Options from "../../../components/common/Options";
 import { Sprint } from "../../../types/ISprint";
 import ModalData from "../../../components/ui/ModalData";
 import { useActiveSprint } from "../../../hooks/useActiveSprint";
+import Swal from "sweetalert2";
 
 interface PropsSTask {
   setOpen: (task?: Task) => void;
@@ -37,6 +38,23 @@ const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
     },
   ];
 
+  // Modal de SweetAlert que se encarga de elimninar una tarea
+  const handlerDeleteTask = (task: Task) => {
+    Swal.fire({
+      title: "¿Estas seguro/a de eliminar esta tarea?",
+      text: "Una vez eliminada, no se podra recuperar",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "¡Si, quiero eliminarla!",
+      cancelButtonText: "Quizas más tarde",
+      confirmButtonColor: "#3a5b9d",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteTaskS(task);
+      }
+    });
+  };
+
   return (
     <>
       <section className="flex justify-around w-[90%] mx-auto">
@@ -50,7 +68,7 @@ const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
                       size="36"
                       see={() => setShowData(task)}
                       edit={() => setOpen(task)}
-                      remove={() => deleteTaskS(task)}
+                      remove={() => handlerDeleteTask(task)}
                     />
                   </TaskSprint>
                 ))

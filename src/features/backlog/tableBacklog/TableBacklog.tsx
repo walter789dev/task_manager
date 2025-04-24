@@ -48,7 +48,7 @@ const TableBacklog: FC<PropsTable> = ({ setOpen }) => {
           <span className="block pl-20 grow-2 text-start">Opciones</span>
         </div>
         <div>
-          {taskBacklog.length &&
+          {taskBacklog.length > 0 &&
             taskBacklog.map((task: Task) => (
               <RowTableBacklog key={task.id} task={task}>
                 <SendTask task={task} />
