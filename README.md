@@ -13,6 +13,7 @@ Este proyecto se construyó utilizando las siguientes tecnologías principales:
 * **Tailwind CSS:** Un framework de CSS de utilidad-primera que permite un desarrollo rápido y flexible de interfaces de usuario directamente en el HTML.
 * **Zustand:** Una pequeña, rápida y escalable biblioteca de gestión de estado para React, que facilita la administración del estado global de la aplicación de manera sencilla.
 * **React Router:** Una biblioteca de enrutamiento estándar para React, que permite la navegación entre diferentes vistas o páginas dentro de la aplicación.
+* **Json Server**: Es una herramienta que te permite crear una API REST falsa y rápida a partir de un archivo JSON.
 
 ## Funcionalidades Principales
 
@@ -60,12 +61,4 @@ Este proyecto se construyó utilizando las siguientes tecnologías principales:
     # o
     yarn run server
     ```
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Si encuentras algún error o tienes alguna sugerencia de mejora, no dudes en abrir un issue o enviar un pull request.
-
----
-
-¡Espero que este `README.md` sea útil para tu proyecto! Puedes personalizarlo aún más añadiendo una captura de pantalla de la aplicación o detalles específicos de tu implementación.
 
