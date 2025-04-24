@@ -5,10 +5,12 @@ interface PropsHeader {
   title: string;
 }
 
-
+// Componente visual que muestra el Backlog / Sprint Activo dependiendo la situación
 const Header: FC<PropsHeader> = ({ image, title }) => {
   const date = new Date();
-  const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+  const formatDate = `${date.getFullYear()}/${
+    date.getMonth() + 1
+  }/${date.getDate()}`;
 
   return (
     <header className="relative h-40">

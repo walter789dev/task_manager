@@ -8,9 +8,12 @@ import { useTaskList } from "../../hooks/useTaskList";
 import { useModal } from "../../hooks/useModal";
 
 const Backlog = () => {
+  // Operaciones para tareas del backlog
   const { createTaskBacklog, modifyTaskBacklog } = useTaskList();
+  // Operaciones para manejar el modal del Formulario
   const { open, editTask, setOpen } = useModal();
 
+  // Me permite crear / actualizar dependiendo de si encuentra un id
   const handlerSubmit = (task: Task) => {
     if (!("id" in task)) {
       createTaskBacklog({

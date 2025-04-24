@@ -1,35 +1,27 @@
 import { useShallow } from "zustand/shallow";
 import { Task } from "../types/ITask";
 import { helpHttp } from "../helpers/helpHttp";
-import { useStoreSprint } from "../store/useStoreSprints";
-import { useParams } from "react-router";
 import { Sprint } from "../types/ISprint";
 import { useStoreActive } from "../store/useStoreActive";
 
 export const useActiveSprint = () => {
   const URL_SPRINT = import.meta.env.VITE_URL_SPRINT;
   const { getItem, updateItem } = helpHttp(URL_SPRINT);
-  const params = useParams();
 
-  const sprints = useStoreSprint((state) => state.sprints);
+  // Operaciones de la Store del Sprint Activo
   const { active, setActiveSprint } = useStoreActive(
     useShallow((state) => ({ ...state }))
   );
 
-  const getActive = async () => {
-    if (params.id) {
-      const item = await getItem(params.id);
-      if (item) setActiveSprint(item as Sprint);
-    }
+  // Me permite asignar el sprint activo mediante :id obtenido de la URL
+  const getActive = async (id: string) => {
+    const item = await getItem(id);
+    if (item) setActiveSprint(item as Sprint);
   };
 
-  const setActive = (id: string) => {
-    const activeSprint = sprints.find((sprint) => sprint.id === id);
-    if (activeSprint) setActiveSprint(activeSprint);
-  };
-
+  // + AddTask: Me permite añadir una tarea al Sprint activo.
+  // - newActive: Creo una copia del Sprint actual para no modificar el Sprint
   const addTask = async (task: Task) => {
-    const { updateItem } = helpHttp(URL_SPRINT);
     const newActive = structuredClone(active);
     newActive?.tareas.push(task);
 
@@ -39,8 +31,11 @@ export const useActiveSprint = () => {
     }
   };
 
+  // ediTask: Me permite actualizar una tarea del Sprint activo.
+  // - newActive: Creo una copia del Sprint actual para no modificar el Sprint
   const editTaskS = async (newTask: Task) => {
     let newActive = structuredClone(active);
+    // Obtengo un nuevo arreglo que actualiza la tarea que coincide con la recibida
     const tareas = newActive?.tareas.map((task) =>
       task.id === newTask.id ? newTask : task
     );
@@ -54,8 +49,11 @@ export const useActiveSprint = () => {
     }
   };
 
+  // deleteTask: Me permite eliminar una tarea del sprint activo.
+  // - newActive: Creo una copia del Sprint actual para no modificar el Sprint
   const deleteTaskS = async (newTask: Task) => {
     let newActive = structuredClone(active);
+    // Filtro aquella tarea que no contenga el mismo id de la tarea recibida.
     const tareas = newActive?.tareas.filter((task) => task.id !== newTask.id);
 
     if (newActive) {
@@ -70,7 +68,6 @@ export const useActiveSprint = () => {
   return {
     active,
     getActive,
-    setActive,
     addTask,
     editTaskS,
     deleteTaskS,

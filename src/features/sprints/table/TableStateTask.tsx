@@ -12,12 +12,16 @@ interface PropsSTask {
   active: Sprint | null;
 }
 
+// Componente visual que se encarga de mostrar las tareas del Sprint Activo.
 const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
-    const [showData, setShowData] = useState<Task | null>(null);
-    const {deleteTaskS} = useActiveSprint()
+  // Visualizacion de la tarea del Sprint
+  const [showData, setShowData] = useState<Task | null>(null);
+  // Operacion del Sprint Activo
+  const { deleteTaskS } = useActiveSprint();
 
   if (active == null) return;
 
+  // Objeto dedicado a filtrar las tareas por el estado de la misma.
   const listTask = [
     {
       nombre: "Pendiente",
@@ -56,7 +60,9 @@ const TableStateTask: FC<PropsSTask> = ({ setOpen, active }) => {
             </ColumnStateTask>
           ))}
       </section>
-      {showData && <ModalData title="Tarea" data={showData} close={setShowData} />}
+      {showData && (
+        <ModalData title="Tarea" data={showData} close={setShowData} />
+      )}
     </>
   );
 };

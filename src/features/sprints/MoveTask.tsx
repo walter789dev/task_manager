@@ -9,6 +9,7 @@ interface PropsMove {
   task: Task;
 }
 
+// Componente visual que se encarga de Mover las tareas al estado seleccionado
 const MoveTask: FC<PropsMove> = ({ task, title }) => {
   const { moveTaskState } = useMoveTask();
 

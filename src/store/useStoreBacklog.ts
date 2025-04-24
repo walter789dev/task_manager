@@ -9,6 +9,7 @@ interface StoreBacklog {
   removeTaskBacklog: (id: string) => void;
 }
 
+// Manjeo de operaciones en la lista de tareas del backlog
 export const useStoreBacklog = create<StoreBacklog>((set) => ({
   backlog: [],
   setAllTaskBacklog: (allTask) => set(() => ({ backlog: allTask })),

@@ -6,6 +6,7 @@ interface PropsTitle {
   openModal: VoidFunction;
 }
 
+// Componente visual que detalla en que sección nos encontramos
 const TaskTitle: FC<PropsTitle> = ({ title, openModal }) => {
   return (
     <section className="flex justify-between items-center ml-10 mr-20 pt-8 pb-6">

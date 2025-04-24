@@ -5,6 +5,7 @@ interface PropsColumn {
   children: ReactNode;
 }
 
+// Componente visual dedicado a sectorizar las tareas por su estado.
 const ColumnStateTask: FC<PropsColumn> = ({ title, children }) => {
   return (
     <div className="w-[30%] h-[65vh] bg-[#FAFAFA] pb-3">

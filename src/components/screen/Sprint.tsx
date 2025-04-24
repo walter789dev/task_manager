@@ -10,10 +10,13 @@ import FormBacklog from "../common/Form";
 import { useModal } from "../../hooks/useModal";
 
 const Sprint = () => {
-  const params = useParams();
+  // Operaciones del Sprint Activo
   const { active, addTask, editTaskS, getActive } = useActiveSprint();
+  // Operaciones para manejar el modal Formualrio
   const { open, editTask, setOpen } = useModal();
+  const params = useParams();
 
+  // Me permite crear / actualizar una tarea del Sprint Activo
   const handlerSubmit = (task: Task) => {
     if (!("id" in task)) {
       addTask({
@@ -26,8 +29,11 @@ const Sprint = () => {
     setOpen();
   };
 
+  // Defino el Sprint activo mediante el ID pasado por la URL
   useEffect(() => {
-    getActive();
+    if (params.id) {
+      getActive(params.id);
+    }
   }, [params]);
 
   return (

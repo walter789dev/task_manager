@@ -9,6 +9,7 @@ interface PropsNForm {
   handlerSubmit: (sprint: Sprint) => void;
 }
 
+// Valores iniciales del formulario
 const initial = {
   nombre: "",
   fechaInicio: "",
@@ -16,6 +17,7 @@ const initial = {
   tareas: [],
 };
 
+// Componente dedicado al formulario para los Sprints
 const FormNavigate: FC<PropsNForm> = ({
   editSprint,
   closeModal,
@@ -34,6 +36,7 @@ const FormNavigate: FC<PropsNForm> = ({
   useEffect(() => {
     if (editSprint) setDataForm(editSprint);
   }, [editSprint]);
+
   return (
     <div className="absolute flex justify-center items-center inset-0 bg-[#0003] z-30">
       <form className="flex flex-col gap-4 w-[25%] p-7 bg-white rounded-2xl scale-up-center">

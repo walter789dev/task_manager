@@ -5,7 +5,7 @@ import { Sprint } from "../types/ISprint";
 
 export const useSprintList = () => {
   const URL_SPRINT = import.meta.env.VITE_URL_SPRINT;
-
+  // Operaciones de la Store para la lista de Sprints
   const { sprints, addSprint, editSprint, removeSprint, setAllSprints } =
     useStoreSprint(
       useShallow((state) => ({
@@ -13,6 +13,7 @@ export const useSprintList = () => {
       }))
     );
 
+  // Obtiene todos los Sprints
   const getAllSprints = async () => {
     const { getAllItems } = helpHttp<Sprint[]>(URL_SPRINT);
     const items = await getAllItems();
@@ -22,6 +23,7 @@ export const useSprintList = () => {
     }
   };
 
+  // Permite crear un Sprint
   const createSprint = async (sprint: Sprint) => {
     const { createItem } = helpHttp<Sprint>(URL_SPRINT);
     const isOk = await createItem(sprint);
@@ -31,6 +33,7 @@ export const useSprintList = () => {
     }
   };
 
+  // Permite actualizar un Sprint en especifico
   const modifySprint = async (sprint: Sprint) => {
     const { updateItem } = helpHttp<Sprint>(URL_SPRINT);
     const isOk = await updateItem(sprint);
@@ -40,6 +43,7 @@ export const useSprintList = () => {
     }
   };
 
+  // Elimina un sprint mediante su id
   const deleteSprint = async (sprintId: string) => {
     const { deleteItem } = helpHttp<Sprint>(URL_SPRINT);
     const isOk = await deleteItem(sprintId);

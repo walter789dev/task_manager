@@ -12,14 +12,18 @@ interface PropsLSprint {
   setData: (sprint: Sprint) => void;
 }
 
+// Seccion de la Navegación que se encarga de mostrar los Sprint existentes.
 const ListSprintNavigate: FC<PropsLSprint> = ({
   sprints,
   setOpen,
   setData,
 }) => {
+  // Operacion de la lista de Sprints
   const { deleteSprint } = useSprintList();
+  // Hook para navegar por las rutas
   const navigate = useNavigate();
 
+  // Modal de SweetAlert que se encarga de eliminar un Sprint
   const handlerDelete = (id: string) => {
     Swal.fire({
       title: "¿Estas seguro/a de eliminar este sprint?",

@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { Task } from "../../../types/ITask";
-import TaskTableBacklog from "./RowTableBacklog";
+import RowTableBacklog from "./RowTableBacklog";
 import Options from "../../../components/common/Options";
 import { useTaskList } from "../../../hooks/useTaskList";
 import ModalData from "../../../components/ui/ModalData";
@@ -12,9 +12,12 @@ interface PropsTable {
 }
 
 const TableBacklog: FC<PropsTable> = ({ setOpen }) => {
+  // Visualizacion de la informacion de la tarea
   const [showData, setShowData] = useState<Task | null>(null);
+  // Opeaciones de las tareas del Backlog
   const { taskBacklog, getAllTaskBacklog, deleteTaskBacklog } = useTaskList();
 
+  // Modal de SweetAlert que se encarga de elimninar una tarea
   const handlerDeleteTask = (id: string) => {
     Swal.fire({
       title: "¿Estas seguro/a de eliminar esta tarea?",
@@ -31,6 +34,7 @@ const TableBacklog: FC<PropsTable> = ({ setOpen }) => {
     });
   };
 
+  // Obtengo todas las tareas del Backlog al montarse el componente
   useEffect(() => {
     getAllTaskBacklog();
   }, []);
@@ -46,7 +50,7 @@ const TableBacklog: FC<PropsTable> = ({ setOpen }) => {
         <div>
           {taskBacklog.length &&
             taskBacklog.map((task: Task) => (
-              <TaskTableBacklog key={task.id} task={task}>
+              <RowTableBacklog key={task.id} task={task}>
                 <SendTask task={task} />
                 <Options
                   size="40"
@@ -54,7 +58,7 @@ const TableBacklog: FC<PropsTable> = ({ setOpen }) => {
                   edit={() => setOpen(task)}
                   remove={() => handlerDeleteTask(task.id!)}
                 />
-              </TaskTableBacklog>
+              </RowTableBacklog>
             ))}
         </div>
       </section>

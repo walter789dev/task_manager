@@ -1,5 +1,6 @@
 import ImageLogo from "../../assets/svg/logo.svg";
 
+// Componente visual que muestra el logo de la app
 const Logo = () => {
   return (
     <div className="flex flex-col items-center w-fit">

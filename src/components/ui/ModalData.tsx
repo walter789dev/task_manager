@@ -8,6 +8,7 @@ interface PropsData {
   close: (state: null) => void;
 }
 
+// Componente dedicado a mostrar la información de una Tarea o Sprint
 const ModalData: FC<PropsData> = ({ title, data, close }) => {
   return (
     <div className="absolute inset-0 flex justify-center items-center bg-[#0002]">

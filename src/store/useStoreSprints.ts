@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { StoreSprint } from "../types/ISprint";
 
+// Store para realizar operaciones con la lista de Sprints
 export const useStoreSprint = create<StoreSprint>((set) => ({
   sprints: [],
   setAllSprints: (allSprints) =>

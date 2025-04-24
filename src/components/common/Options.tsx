@@ -7,6 +7,8 @@ interface PropsOptions {
   remove: VoidFunction;
 }
 
+// Realiza las operaciones pertinente a Ver Informacion, Editar y Eliminar
+// de acuerdo al contexto en el que se aplique
 const Options: FC<PropsOptions> = ({ see, edit, remove, size }) => {
   return (
     <>

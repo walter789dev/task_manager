@@ -8,14 +8,18 @@ interface PropsSend {
   task: Task;
 }
 
+// Se encarga de enviar una tarea a un Sprint seleccionado
 const SendTask: FC<PropsSend> = ({ task }) => {
-  const [selectValue, setSelectValue] = useState("");
   const { sprints } = useSprintList();
+  // Valor actual del Select (contiene el nombre del sprint a donde se enviara la tarea)
+  const [selectValue, setSelectValue] = useState("");
+  // Mueve la tarea del Backlog al Sprint indicado
   const { moveTaskToSprint } = useMoveTask();
 
   const handlerOption = (e: ChangeEvent<HTMLSelectElement>) =>
     setSelectValue(e.target.value);
 
+  // Modal de SweetAlert que se encarga de realizar la funcionalidad.
   const sendInfo = () => {
     if (selectValue !== "") {
       Swal.fire({
@@ -54,7 +58,9 @@ const SendTask: FC<PropsSend> = ({ task }) => {
         {sprints &&
           sprints.length &&
           sprints.map((sprint, i) => (
-            <option key={i} value={sprint.nombre}>{sprint.nombre}</option>
+            <option key={i} value={sprint.nombre}>
+              {sprint.nombre}
+            </option>
           ))}
       </select>
     </div>

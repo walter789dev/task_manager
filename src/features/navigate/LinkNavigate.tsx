@@ -8,6 +8,7 @@ interface PropsItem {
   icon?: () => ReactNode;
 }
 
+// Enlace de los Sprints existentes
 const LinkNavigate: FC<PropsItem> = ({ text, url = "/", children, icon }) => {
   return (
     <li className="my-1 font-semibold">

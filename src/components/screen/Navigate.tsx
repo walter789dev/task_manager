@@ -10,11 +10,15 @@ import { Sprint } from "../../types/ISprint";
 import ModalData from "../ui/ModalData";
 
 const Navigate = () => {
+  // Visualizar o no, la informacion del Sprint
   const [showData, setShowData] = useState<Sprint | null>(null);
+  // Operaciones del hook de Lista de Sprints
   const { sprints, getAllSprints, createSprint, modifySprint } =
     useSprintList();
+  // Operaciones para manejar el modal del Formulario
   const { open, editTask, setOpen } = useModal();
 
+  // Me permite crear / actualizar un Sprint si encuentra un id
   const handlerSubmit = (sprint: Sprint) => {
     if (!("id" in sprint)) {
       createSprint({
@@ -27,6 +31,7 @@ const Navigate = () => {
     setOpen();
   };
 
+  // Obtengo todos los Sprint al iniciar la app
   useEffect(() => {
     getAllSprints();
   }, []);
@@ -59,7 +64,9 @@ const Navigate = () => {
           handlerSubmit={handlerSubmit}
         />
       )}
-      {showData && <ModalData title="Sprint" data={showData} close={setShowData} />}
+      {showData && (
+        <ModalData title="Sprint" data={showData} close={setShowData} />
+      )}
     </>
   );
 };

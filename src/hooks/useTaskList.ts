@@ -5,6 +5,7 @@ import { Task } from "../types/ITask";
 
 export const useTaskList = () => {
   const URL_BACKLOG = import.meta.env.VITE_URL_BACKLOG;
+  // Operaciones de la Store de tareas del Backlog
   const {
     backlog,
     setAllTaskBacklog,
@@ -16,6 +17,8 @@ export const useTaskList = () => {
       ...state,
     }))
   );
+
+  // Se encarga de obtener todas las tareas del backlog
   const getAllTaskBacklog = async () => {
     const { getAllItems } = helpHttp<Task[]>(URL_BACKLOG);
     const items = await getAllItems();
@@ -25,6 +28,7 @@ export const useTaskList = () => {
     }
   };
 
+  // Se encarga de la creación de una tarea en el backlog
   const createTaskBacklog = async (task: Task) => {
     const { createItem } = helpHttp<Task>(URL_BACKLOG);
     const isOk = await createItem(task);
@@ -34,6 +38,7 @@ export const useTaskList = () => {
     }
   };
 
+  // Se encarga de actualizar una tarea en el backlog
   const modifyTaskBacklog = async (task: Task) => {
     const { updateItem } = helpHttp<Task>(URL_BACKLOG);
     const isOk = await updateItem(task);
@@ -43,6 +48,7 @@ export const useTaskList = () => {
     }
   };
 
+  // Se encarga de eliminar una tarea en el backlolg
   const deleteTaskBacklog = async (taskId: string) => {
     const { deleteItem } = helpHttp<Task>(URL_BACKLOG);
     const isOk = await deleteItem(taskId);

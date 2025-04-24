@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import { Task } from "../../../types/ITask";
-import MoveTask from '../MoveTask'
+import MoveTask from "../MoveTask";
 import { useMoveTask } from "../../../hooks/useMoveTask";
 
 interface PropsTS {
@@ -9,8 +9,11 @@ interface PropsTS {
   children: ReactNode;
 }
 
+// Componente que se encarga de mostrar la tarea del Sprint
 const TaskSprint: FC<PropsTS> = ({ task, children, title }) => {
-    const {moveTaskToBacklog} = useMoveTask()
+  // Operacion de enviar tarea al Backlog
+  const { moveTaskToBacklog } = useMoveTask();
+
   return (
     <div className="mx-3 px-4 py-3 text-[14px] bg-[#E2EAF7] rounded-2xl">
       <div className="flex justify-between items-center">
@@ -31,7 +34,10 @@ const TaskSprint: FC<PropsTS> = ({ task, children, title }) => {
         <MoveTask task={task!} title={title} />
       </div>
       <div className="flex mt-3 justify-between items-center">
-        <button className="px-3 py-1 border rounded-xl cursor-pointer" onClick={() => moveTaskToBacklog(task!)}>
+        <button
+          className="px-3 py-1 border rounded-xl cursor-pointer"
+          onClick={() => moveTaskToBacklog(task!)}
+        >
           Enviar al backlog
         </button>
         {children}
