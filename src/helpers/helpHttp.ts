@@ -47,21 +47,19 @@ export const helpHttp = <T extends object>(API_URL: string) => {
 
   const updateItem = async (item: T) => {
     try {
-      if ("id" in item) {
-        const preResult = await fetch(`${API_URL}/${item.id}`, {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(item),
-        });
+      const preResult = await fetch(`${API_URL}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(item),
+      });
 
-        if (!preResult.ok) {
-          throw new Error("No se han podido actualizar el elemento solicitado");
-        }
-
-        return preResult.ok;
+      if (!preResult.ok) {
+        throw new Error("No se han podido actualizar el elemento solicitado");
       }
+
+      return preResult.ok;
     } catch (e) {
       console.error(e);
     }

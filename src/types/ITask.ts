@@ -1,3 +1,7 @@
+export interface Backlog {
+    tareas: Task[]
+}
+
 export interface Task {
   id?: string;
   titulo: string;

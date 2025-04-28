@@ -1,92 +1,75 @@
 {
-  "backlog": [
-    {
-      "id": "6",
-      "titulo": "Monguito",
-      "descripcion": "Este es el hijo de mondongo",
-      "fechaLimite": "2026-09-02",
-      "estado": "pendiente"
-    },
-    {
-      "id": "2",
-      "titulo": "Mandinga",
-      "descripcion": "Este es el tio de monguito",
-      "fechaLimite": "2026-11-16",
-      "estado": "pendiente"
-    },
-    {
-      "id": "1745499722946",
-      "titulo": "Lorena",
-      "descripcion": "Esta es una descripcion",
-      "estado": "en progreso",
-      "fechaLimite": "2025-04-09"
-    }
-  ],
-  "sprints": [
-    {
-      "id": "1",
-      "fechaInicio": "2025-10-08",
-      "fechaFinal": "2025-12-12",
-      "nombre": "Sprint Editado",
-      "tareas": [
-        {
-          "id": "20",
-          "titulo": "Mango",
-          "descripcion": "El primo de monguito",
-          "fechaLimite": "2025-04-15",
-          "estado": "en progreso"
-        },
-        {
-          "titulo": "dsfdsfsd",
-          "descripcion": "dsfdsfds",
-          "estado": "completado",
-          "fechaLimite": "2025-04-19",
-          "id": "1743801198093"
-        },
-        {
-          "titulo": "ererere",
-          "descripcion": "ererere",
-          "estado": "pendiente",
-          "fechaLimite": "2025-04-18",
-          "id": "1743805551602"
-        },
-        {
-          "id": "1745343770309",
-          "titulo": "Lorenzo",
-          "descripcion": "Lorem",
-          "estado": "completado",
-          "fechaLimite": "2025-04-26"
-        }
-      ]
-    },
-    {
-      "id": "1743797779541",
-      "nombre": "Anualizado",
-      "fechaInicio": "2025-04-25",
-      "fechaFinal": "2025-04-12",
-      "tareas": [
-        {
-          "titulo": "rtretretretret",
-          "descripcion": "rtretrer",
-          "estado": "pendiente",
-          "fechaLimite": "2025-04-09",
-          "id": "1743800425175"
-        },
-        {
-          "titulo": "dsfssdw3erwe",
-          "descripcion": "ewrewrwe",
-          "estado": "en progreso",
-          "fechaLimite": "2025-04-01",
-          "id": "1743804444530"
-        },
-        {
-          "id": "1743524604475",
-          "titulo": "Mango",
-          "descripcion": "El primo de monguito",
-          "fechaLimite": "2025-04-15",
-          "estado": "completado"
-        }
-      ]
-    }
-  ]
+  "backlog": {
+    "tareas": [
+      {
+        "titulo": "Tarea 4",
+        "descripcion": "fdgdfgdfg",
+        "estado": "pendiente",
+        "fechaLimite": "2025-04-26",
+        "id": "1745847353811"
+      },
+      {
+        "titulo": "Tarea 5",
+        "descripcion": "fdgfgg",
+        "estado": "completado",
+        "fechaLimite": "2025-04-19",
+        "id": "1745847361420"
+      },
+      {
+        "titulo": "Tare 10",
+        "descripcion": "dfsdfdsf",
+        "estado": "pendiente",
+        "fechaLimite": "2025-04-19",
+        "id": "1745847498008"
+      }
+    ]
+  },
+  "sprintList": {
+    "sprints": [
+      {
+        "id": "1",
+        "fechaInicio": "2025-10-08",
+        "fechaFinal": "2025-12-12",
+        "nombre": "Sprint Editado 2",
+        "tareas": [
+          {
+            "titulo": "ererere",
+            "descripcion": "ererere",
+            "estado": "en progreso",
+            "fechaLimite": "2025-04-18",
+            "id": "1743805551602"
+          },
+          {
+            "titulo": "iiiiiiiiiiiiiiiii",
+            "descripcion": "iiiiiiiiiiiiiiiii",
+            "estado": "pendiente",
+            "fechaLimite": "2025-04-19",
+            "id": "1745845827306"
+          }
+        ]
+      },
+      {
+        "id": "1743797779541",
+        "nombre": "Anualizado",
+        "fechaInicio": "2025-04-25",
+        "fechaFinal": "2025-04-12",
+        "tareas": [
+          {
+            "titulo": "Tarea",
+            "descripcion": "dsfsdf",
+            "estado": "pendiente",
+            "fechaLimite": "2025-04-05",
+            "id": "1745845789412"
+          }
+        ]
+      },
+      {
+        "nombre": "Nueva Sprint",
+        "fechaInicio": "2025-04-11",
+        "fechaFinal": "2025-04-26",
+        "tareas": [],
+        "id": "1745847487879"
+      }
+    ]
+  }
 }

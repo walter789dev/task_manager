@@ -1,5 +1,9 @@
 import { Task } from "./ITask";
 
+export interface SprintList {
+  sprints: Sprint[];
+}
+
 export interface Sprint {
   id?: string;
   nombre: string;
